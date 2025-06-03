@@ -1,0 +1,10 @@
+id = "mcp-server-miaoduo"
+name = "MiaoDuo MCP Server"
+description = "Model Context Protocol Server for MiaoDuo"
+version = "0.0.1"
+schema_version = 1
+authors = ["akatsuki <benmo0802@gmail.com>"]
+repository = "https://github.com/benmooo/zed-mcp-server-miaoduo"
+
+[context_servers.mcp-server-miaoduo]
+name = "MiaoDuo MCP Server"
