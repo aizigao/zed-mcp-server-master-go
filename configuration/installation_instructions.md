@@ -1,3 +1,9 @@
-A MASTER_GO_TOKEN is required.
+A master_go_token is required.
 
-在MasterGo账号设置中获取访问令牌。
+# MasterGo Account Settings
+
+- master_go_token
+  You can obtain the access token from the link below.
+  https://mastergo.com/files/account?tab=security
+- master_go_url
+  Optional: Used to specify the MasterGo service URL. Default value is https://mastergo.com

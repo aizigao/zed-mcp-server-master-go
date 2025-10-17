@@ -1,12 +1,9 @@
-zed-mcp-server-master-go
+# zed-mcp-server-master-go
 
 Zed Extension for [@mastergo/magic-mcp](https://github.com/mastergo-design/mastergo-magic-mcp) Integration.
 
 
 - [MasterGo](https://mastergo.com/)
-
-
-not ready for use
 
 
 ## Thanks

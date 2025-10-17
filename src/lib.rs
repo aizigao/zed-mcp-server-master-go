@@ -8,8 +8,8 @@ use zed_extension_api::{
 
 const PROJECT_NAME: &str = "mcp-server-master-go";
 const PACKAGE_NAME: &str = "@mastergo/magic-mcp";
-const PACKAGE_VERSION: &str = "0.0.1";
-const SERVER_PATH: &str = "node_modules/@mastergo/magic-mcp/dist/index.js";
+// const PACKAGE_VERSION: &str = "0.1.2";
+const SERVER_PATH: &str = "node_modules/@mastergo/magic-mcp/.bin/mastergo-magic-mcp";
 
 struct MasterGoModelContextExtension;
 
@@ -24,13 +24,16 @@ impl zed::Extension for MasterGoModelContextExtension {
         project: &Project,
     ) -> Result<Command> {
         let version = zed::npm_package_installed_version(PACKAGE_NAME)?;
-        if version.as_deref() != Some(PACKAGE_VERSION) {
-            zed::npm_install_package(PACKAGE_NAME, PACKAGE_VERSION)?;
+        let latest_version = zed::npm_package_latest_version(PACKAGE_NAME)?;
+        if version.as_deref() != Some(latest_version.as_ref()) {
+            zed::npm_install_package(PACKAGE_NAME, &latest_version)?;
         }
 
         let settings = ContextServerSettings::for_project(PROJECT_NAME, project)?;
+
+
         let Some(settings) = settings.settings else {
-            return Err("missing `MASTER_GO_TOKEN` setting".into());
+            return Err("missing `master_go_token` setting".into());
         };
 
         let settings: MasterGoContextServerSettings =
@@ -45,7 +48,10 @@ impl zed::Extension for MasterGoModelContextExtension {
                     .to_string_lossy()
                     .to_string(),
             ],
-            env: vec![("MASTER_GO_TOKEN".to_string(), settings.master_go_token)],
+            env: vec![
+                ("token".to_string(), settings.master_go_token),
+                ("url".to_string(), settings.master_go_url),
+            ],
         })
     }
     fn context_server_configuration(
@@ -68,9 +74,17 @@ impl zed::Extension for MasterGoModelContextExtension {
     }
 }
 
+fn default_master_go_url() -> String {
+    "https://mastergo.com".to_string()
+}
+
 #[derive(Debug, Deserialize, JsonSchema)]
 struct MasterGoContextServerSettings {
-    MASTER_GO_TOKEN: String,
+    #[serde(rename = "master_go_token")]
+    master_go_token: String,
+    #[serde(default = "default_master_go_url", rename = "master_go_url")]
+    #[schemars(default = "default_master_go_url")]
+    master_go_url: String,
 }
 
 zed::register_extension!(MasterGoModelContextExtension);

@@ -1,6 +1,6 @@
 id = "mcp-server-master-go"
-name = "Master MCP Server"
-description = "Model Context Protocol Server for Master go"
+name = "Master-Go MCP Server"
+description = "Model Context Protocol Server for Master-go https://mastergo.com/"
 version = "0.0.1"
 schema_version = 1
 authors = ["aizigao <aizigao@outlook.com>"]

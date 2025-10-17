@@ -1,3 +1,4 @@
 {
-  "master_go_token": "MASTER_GO_TOKEN"
+  "master_go_token": "your_master_go_token",
+  "master_go_url": "https://mastergo.com"
 }
