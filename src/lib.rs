@@ -31,7 +31,6 @@ impl zed::Extension for MasterGoModelContextExtension {
 
         let settings = ContextServerSettings::for_project(PROJECT_NAME, project)?;
 
-
         let Some(settings) = settings.settings else {
             return Err("missing `master_go_token` setting".into());
         };
@@ -49,8 +48,8 @@ impl zed::Extension for MasterGoModelContextExtension {
                     .to_string(),
             ],
             env: vec![
-                ("token".to_string(), settings.master_go_token),
-                ("url".to_string(), settings.master_go_url),
+                ("MG_MCP_TOKEN".to_string(), settings.master_go_token),
+                ("API_BASE_URL".to_string(), settings.master_go_url),
             ],
         })
     }
