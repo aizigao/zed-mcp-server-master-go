@@ -6,14 +6,14 @@ use zed_extension_api::{
     settings::ContextServerSettings,
 };
 
-const PROJECT_NAME: &str = "mcp-server-miaoduo";
-const PACKAGE_NAME: &str = "@miaoduo/miaoduo-mcp-server";
-const PACKAGE_VERSION: &str = "0.0.18";
-const SERVER_PATH: &str = "node_modules/@miaoduo/miaoduo-mcp-server/dist/index.js";
+const PROJECT_NAME: &str = "mcp-server-master-go";
+const PACKAGE_NAME: &str = "@mastergo/magic-mcp";
+const PACKAGE_VERSION: &str = "0.0.1";
+const SERVER_PATH: &str = "node_modules/@mastergo/magic-mcp/dist/index.js";
 
-struct MiaoDuoModelContextExtension;
+struct MasterGoModelContextExtension;
 
-impl zed::Extension for MiaoDuoModelContextExtension {
+impl zed::Extension for MasterGoModelContextExtension {
     fn new() -> Self {
         Self
     }
@@ -30,10 +30,10 @@ impl zed::Extension for MiaoDuoModelContextExtension {
 
         let settings = ContextServerSettings::for_project(PROJECT_NAME, project)?;
         let Some(settings) = settings.settings else {
-            return Err("missing `MIAODUO_TOKEN` setting".into());
+            return Err("missing `MASTER_GO_TOKEN` setting".into());
         };
 
-        let settings: MiaoDuoContextServerSettings =
+        let settings: MasterGoContextServerSettings =
             serde_json::from_value(settings).map_err(|e| e.to_string())?;
 
         Ok(Command {
@@ -45,7 +45,7 @@ impl zed::Extension for MiaoDuoModelContextExtension {
                     .to_string_lossy()
                     .to_string(),
             ],
-            env: vec![("MIAODUO_TOKEN".to_string(), settings.miaoduo_token)],
+            env: vec![("MASTER_GO_TOKEN".to_string(), settings.master_go_token)],
         })
     }
     fn context_server_configuration(
@@ -57,7 +57,7 @@ impl zed::Extension for MiaoDuoModelContextExtension {
             include_str!("../configuration/installation_instructions.md").to_string();
         let default_settings = include_str!("../configuration/default_settings.jsonc").to_string();
         let settings_schema =
-            serde_json::to_string(&schemars::schema_for!(MiaoDuoContextServerSettings))
+            serde_json::to_string(&schemars::schema_for!(MasterGoContextServerSettings))
                 .map_err(|e| e.to_string())?;
 
         Ok(Some(ContextServerConfiguration {
@@ -69,8 +69,8 @@ impl zed::Extension for MiaoDuoModelContextExtension {
 }
 
 #[derive(Debug, Deserialize, JsonSchema)]
-struct MiaoDuoContextServerSettings {
-    miaoduo_token: String,
+struct MasterGoContextServerSettings {
+    MASTER_GO_TOKEN: String,
 }
 
-zed::register_extension!(MiaoDuoModelContextExtension);
+zed::register_extension!(MasterGoModelContextExtension);

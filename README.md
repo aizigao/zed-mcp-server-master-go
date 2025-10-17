@@ -1,6 +1,14 @@
-zed-mcp-server-miaoduo
+zed-mcp-server-master-go
 
-Zed Extension for [@miaoduo/miaoduo-mcp-server](https://www.npmjs.com/package/@miaoduo/miaoduo-mcp-server) Integration.
+Zed Extension for [@mastergo/magic-mcp](https://github.com/mastergo-design/mastergo-magic-mcp) Integration.
 
 
-- [妙多](https://www.miaoduo.com)
+- [MasterGo](https://mastergo.com/)
+
+
+not ready for use
+
+
+## Thanks
+
+- this lib fork from [zed-mcp-server-miaoduo](https://github.com/aizigao/zed-mcp-server-miaoduo)

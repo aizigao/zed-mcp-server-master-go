@@ -1,5 +1,5 @@
 [package]
-name = "zed-mcp-server-miaoduo"
+name = "zed-mcp-server-master-go"
 version = "0.0.1"
 edition = "2024"
 publish = false

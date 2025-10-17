@@ -1,3 +1,3 @@
-A MIAODUO_TOKEN is required.
+A MASTER_GO_TOKEN is required.
 
-在妙多账号设置中获取访问令牌。
+在MasterGo账号设置中获取访问令牌。

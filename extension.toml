@@ -1,10 +1,10 @@
-id = "mcp-server-miaoduo"
-name = "MiaoDuo MCP Server"
-description = "Model Context Protocol Server for MiaoDuo"
+id = "mcp-server-master-go"
+name = "Master MCP Server"
+description = "Model Context Protocol Server for Master go"
 version = "0.0.1"
 schema_version = 1
-authors = ["akatsuki <benmo0802@gmail.com>"]
-repository = "https://github.com/benmooo/zed-mcp-server-miaoduo"
+authors = ["aizigao <aizigao@outlook.com>"]
+repository = "https://github.com/aizigao/zed-mcp-server-master-go"
 
-[context_servers.mcp-server-miaoduo]
-name = "MiaoDuo MCP Server"
+[context_servers.mcp-server-master-go]
+name = "Master-go MCP Server"
