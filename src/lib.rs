@@ -9,7 +9,7 @@ use zed_extension_api::{
 const PROJECT_NAME: &str = "mcp-server-master-go";
 const PACKAGE_NAME: &str = "@mastergo/magic-mcp";
 // const PACKAGE_VERSION: &str = "0.1.2";
-const SERVER_PATH: &str = "node_modules/@mastergo/magic-mcp/.bin/mastergo-magic-mcp";
+const SERVER_PATH: &str = "node_modules/@mastergo/magic-mcp/dist/index.js";
 
 struct MasterGoModelContextExtension;
 
